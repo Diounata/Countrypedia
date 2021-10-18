@@ -4,17 +4,46 @@
     box-sizing: border-box;
 
     font-family: 'Nunito Sans', sans-serif;
+    color: var(--text);
 }
 
 .container {
-    margin: 2rem 3rem;
+    width: 100vw;
+    height: 100vh;
+
+    background: var(--background);
+}
+
+.content-container {
+    padding: 2rem 3rem;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-size: 1.2rem;
+    font-weight: 800;
 }
 
 :root {
-    --dark-blue: hsl(209, 23%, 22%);       // Dark Mode elements
-    --very-dark-blue: hsl(207, 26%, 17%);  // Dark Mode background
-    --very-dark-blue: hsl(200, 15%, 8%);   // Light Mode text
-    --dark-gray: hsl(0, 0%, 52%);          // Light Mode input
-    --very-light-gray: hsl(0, 0%, 98%);    // Light Mode Background
-    --white: hsl(0, 0%, 100%);             // Dark Mode text & Light Mode elements
+    .light {
+        --text: hsl(200, 15%, 8%);
+        --element: hsl(0, 0%, 100%);
+        --background: hsl(0, 0%, 98%);
+        --header-background: hsl(0, 0%, 100%);
+        --input: hsl(0, 0%, 52%);
+        --box-shadow: hsl(0, 0%, 96%);
+    }
+
+    .dark {
+        --text: hsl(0, 0%, 100%);
+        --element: hsl(208, 23%, 22%);
+        --background: hsl(209, 26%, 17%);
+        --header-background: hsl(209, 23%, 22%);
+        --input: hsl(209, 23%, 22%);
+        --box-shadow: hsl(201, 26%, 17%);
+    }
 }
