@@ -1,0 +1,30 @@
+@use 'mixins/box-shadow.scss' as add;
+
+.inputContainer {
+    &,
+    label {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    gap: 1rem;
+
+    background: var(--header-background);
+    width: fit-content;
+
+    padding: 1rem 1.5rem;
+
+    @include add.box-shadow;
+
+    input {
+        width: 15rem;
+        background: none;
+        border: none;
+
+        outline: none;
+
+        font-weight: 600;
+        font-family: 'Nunito Sans', sans-serif;
+        color: var(--text);
+    }
+}

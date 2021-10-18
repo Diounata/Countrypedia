@@ -2,9 +2,6 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-
-    font-family: 'Nunito Sans', sans-serif;
-    color: var(--text);
 }
 
 .container {
@@ -26,6 +23,14 @@ h5,
 h6 {
     font-size: 1.2rem;
     font-weight: 800;
+}
+
+*,
+.container,
+input,
+select {
+    font-family: 'Nunito Sans', sans-serif;
+    color: var(--text);
 }
 
 :root {
