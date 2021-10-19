@@ -30,7 +30,14 @@ h6 {
 input,
 select {
     font-family: 'Nunito Sans', sans-serif;
+    font-weight: 600;
     color: var(--text);
+}
+
+.input-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 :root {

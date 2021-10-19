@@ -1,0 +1,56 @@
+@use 'mixins/box-shadow' as add;
+
+.selectContainer {
+    width: fit-content;
+    cursor: pointer;
+
+    position: relative;
+
+    background: var(--header-background);
+    border-radius: 6px;
+
+    user-select: none;
+
+    @include add.box-shadow;
+
+    .selectTitle,
+    .selectOptions {
+        border-radius: 6px;
+    }
+
+    .selectTitle {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1.8rem;
+
+        padding: 1rem 1.5rem;
+    }
+
+    .selectOptions {
+        position: absolute;
+        left: 0;
+        top: calc(100% + 0.5rem);
+        width: 100%;
+        cursor: default;
+
+        padding: 1rem 1.5rem;
+
+        display: none;
+        flex-direction: column;
+        justify-content: space-between;
+
+        @include add.box-shadow;
+
+        background: var(--header-background);
+
+        > div {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 0.3rem 0;
+            cursor: pointer;
+        }
+    }
+}
