@@ -18,7 +18,7 @@
     @include add.box-shadow;
 
     input {
-        width: 15rem;
+        flex: 1;
         background: none;
         border: none;
 
@@ -27,5 +27,13 @@
         font-weight: 600;
         font-family: 'Nunito Sans', sans-serif;
         color: var(--text);
+    }
+
+    @media (max-width: 568px) {
+        width: 100%;
+
+        input {
+            font-size: 1.15em;
+        }
     }
 }

@@ -27,4 +27,12 @@
             transform: scale(1.05);
         }
     }
+
+    @media (max-width: 568px) {
+        padding: 1.3rem 1.5rem;
+
+        > button {
+            gap: 0.3rem;
+        }
+    }
 }

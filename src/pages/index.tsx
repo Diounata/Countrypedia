@@ -1,3 +1,5 @@
+import styles from '@Styles/Index.module.scss';
+
 import Header from '@Components/Header';
 import Input from '@Components/Input';
 import Select from '@Components/Select';
@@ -14,8 +16,8 @@ export default function Home({ data }) {
         <div className={`container ${theme === 'light' ? 'light' : 'dark'}`}>
             <Header />
 
-            <div className="content-container">
-                <div className="input-container">
+            <div className={styles.contentContainer}>
+                <div className={styles.inputContainer}>
                     <Input
                         InputProps={{ type: 'text', placeholder: 'Search for a country...' }}
                         labelId="search-country"
@@ -26,7 +28,9 @@ export default function Home({ data }) {
                     <Select />
                 </div>
 
-                <CountryCards data={data} />
+                <div className={styles.cardsContainer}>
+                    <CountryCards data={data} />
+                </div>
             </div>
         </div>
     );
