@@ -9,7 +9,19 @@ import SearchIcon from '@Icons/Search';
 
 import { useTheme } from '@Contexts/ThemeContext';
 
-export default function Home({ data }) {
+interface CountryDataProps {
+    flag: string;
+    name: string;
+    capital: string;
+    region: string;
+    population: number;
+}
+
+interface Props {
+    data: CountryDataProps[];
+}
+
+export default function Home({ data }: Props) {
     const { theme } = useTheme();
 
     return (
@@ -36,12 +48,12 @@ export default function Home({ data }) {
     );
 }
 
-export async function getStaticProps(context) {
-    const res = await fetch('https://restcountries.com/v2/all');
+export async function getStaticProps() {
+    const res = await fetch('https://restcountries.com/v2/all?fields=flag,name,population,region,capital');
     const initialData = await res.json();
-    let data = [];
+    let data: CountryDataProps[] = [];
 
-    for (let key = 0; key < 30; key++) {
+    for (let key = 0; key < 80; key++) {
         data.push(initialData[key]);
     }
 

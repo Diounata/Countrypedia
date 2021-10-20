@@ -10,7 +10,7 @@ export default function Select() {
     const [isSelectOpen, setIsSelectOpen] = useState(false);
     const [selectedOption, setSelectedOption] = useState<OptionProps>();
 
-    const options = ['Africa', 'Americas', 'Asia', 'Europe', 'Oceania'];
+    const options: OptionProps[] = ['Africa', 'Americas', 'Asia', 'Europe', 'Oceania'];
 
     return (
         <div className={styles.selectContainer}>
@@ -20,7 +20,7 @@ export default function Select() {
                 <ArrowDownIcon />
             </div>
 
-            <div className={styles.selectOptions} style={{ display: isSelectOpen && 'flex' }}>
+            <div className={styles.selectOptions} style={{ display: isSelectOpen ? 'flex' : 'none' }}>
                 {options.map((element: OptionProps, key: number) => (
                     <div key={key} onClick={() => setSelectedOption(element)}>
                         <div>{element}</div> {selectedOption === element && <LeftArrowIcon />}
