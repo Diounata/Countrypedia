@@ -20,7 +20,8 @@
             "@Contexts/*": ["Contexts/*"],
             "@Icons/*": ["Icons/*"],
             "@Styles/*": ["styles/*"],
-            "@Utils/*": ["utils/*"]
+            "@types/*": ["types/*"],
+            "@utils/*": ["utils/*"]
         }
     },
     "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],

@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import styles from '@Styles/CountryCards.module.scss';
 
 interface CountryDataProps {
@@ -26,7 +27,11 @@ export default function CountryCards({ data }: Props) {
             {data.map(({ flag, name, capital, region, population }: CountryDataProps, key: number) => (
                 <div key={key}>
                     <div>
-                        <img src={flag} alt={name} title={name} />
+                        <Link href={`/country/${name}`}>
+                            <a>
+                                <img src={flag} alt={name} title={name} />
+                            </a>
+                        </Link>
                     </div>
 
                     <div>
