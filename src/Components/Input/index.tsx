@@ -1,5 +1,5 @@
 import { InputHTMLAttributes, ReactNode } from 'react';
-import styles from '@Styles/Input.module.scss';
+import styles from './styles.module.scss';
 
 interface Props {
     children: ReactNode;

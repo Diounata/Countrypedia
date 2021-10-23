@@ -1,7 +1,7 @@
 import { AppProps } from 'next/app';
-import '@Styles/main.scss';
+import '@styles/main.scss';
 
-import ThemeContextProvider from '@Contexts/ThemeContext';
+import ThemeContextProvider from '@contexts/ThemeContext';
 
 function MyApp({ Component, pageProps }: AppProps) {
     return (
@@ -12,5 +12,4 @@ function MyApp({ Component, pageProps }: AppProps) {
         </ThemeContextProvider>
     );
 }
-
 export default MyApp;

@@ -1,13 +1,13 @@
 import styles from '@Styles/Index.module.scss';
 
-import Header from '@Components/Header';
-import Input from '@Components/Input';
-import Select from '@Components/Select';
-import CountryCards from '@Components/CountryCards';
+import Header from '@components/Header';
+import Input from '@components/Input';
+import Select from '@components/Select';
+import CountryCards from '@components/CountryCards';
 
-import SearchIcon from '@Icons/Search';
+import SearchIcon from '@icons/Search';
 
-import { useTheme } from '@Contexts/ThemeContext';
+import { useTheme } from '@contexts/ThemeContext';
 
 interface CountryDataProps {
     flag: string;

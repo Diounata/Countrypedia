@@ -16,10 +16,10 @@
 
         "baseUrl": "./src/",
         "paths": {
-            "@Components/*": ["Components/*"],
-            "@Contexts/*": ["Contexts/*"],
-            "@Icons/*": ["Icons/*"],
-            "@Styles/*": ["styles/*"],
+            "@components/*": ["Components/*"],
+            "@contexts/*": ["Contexts/*"],
+            "@icons/*": ["Icons/*"],
+            "@styles/*": ["styles/*"],
             "@types/*": ["types/*"],
             "@utils/*": ["utils/*"]
         }

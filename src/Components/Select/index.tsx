@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import styles from '@Styles/Select.module.scss';
+import styles from './styles.module.scss';
 
-import ArrowDownIcon from '@Icons/ArrowDown';
-import LeftArrowIcon from '@Icons/ArrowLeft';
+import ArrowDownIcon from '@icons/ArrowDown';
+import LeftArrowIcon from '@icons/ArrowLeft';
 
 type OptionProps = 'Africa' | 'Americas' | 'Asia' | 'Europe' | 'Oceania';
 

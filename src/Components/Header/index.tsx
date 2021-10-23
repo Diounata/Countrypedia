@@ -1,9 +1,9 @@
-import styles from '@Styles/Header.module.scss';
+import styles from './styles.module.scss';
 
-import MoonIcon from '@Icons/Moon';
-import FilledMoonIcon from '@Icons/FilledMoon';
+import MoonIcon from '@icons/Moon';
+import FilledMoonIcon from '@icons/FilledMoon';
 
-import { useTheme } from '@Contexts/ThemeContext';
+import { useTheme } from '@contexts/ThemeContext';
 
 export default function Header() {
     const { theme, toggleTheme } = useTheme();
@@ -14,9 +14,8 @@ export default function Header() {
         <header className={styles.headerContainer}>
             <h3>Where in the world?</h3>
 
-            <button title='Toggle theme' onClick={toggleTheme}>
+            <button title="Toggle theme" onClick={toggleTheme}>
                 {icon[theme]}
-
                 Dark Mode
             </button>
         </header>
