@@ -1,0 +1,21 @@
+@use '@styles/mixins/box-shadow' as add;
+
+.buttonContainer {
+  @include add.box-shadow;
+
+  background: var(--element);
+  border: none;
+  border-radius: 5px;
+
+  padding: 0.4rem 1.8rem;
+
+  cursor: pointer;
+
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+
+  span {
+    opacity: 0.8;
+  }
+}

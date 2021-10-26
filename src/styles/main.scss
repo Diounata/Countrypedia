@@ -15,6 +15,15 @@ body {
     background: var(--background);
 }
 
+*,
+.container,
+input,
+select {
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: 600;
+    color: var(--text);
+}
+
 h1,
 h2,
 h3,
@@ -25,14 +34,10 @@ h6 {
     font-weight: 800;
 }
 
-*,
-.container,
-input,
-select {
-    font-family: 'Nunito Sans', sans-serif;
-    font-weight: 600;
-    color: var(--text);
+a {
+    text-decoration: none;
 }
+
 
 :root {
     .light {

@@ -4,7 +4,7 @@ interface CurrenciesProps {
   symbol: string;
 }
 
-interface LanguageProps {
+interface LanguagesProps {
   iso639_1: string;
   iso639_2: string;
   name: string;
@@ -24,8 +24,8 @@ interface CountryProps extends CountryCardProps {
   topLevelDomain: string[];
   currencies: CurrenciesProps[];
   subregion: string;
-  languages: LanguageProps;
+  languages: LanguagesProps[];
   borders: string[];
 }
 
-export type { CountryCardProps, CountryProps };
+export type { CountryCardProps, CountryProps, CurrenciesProps, LanguagesProps };

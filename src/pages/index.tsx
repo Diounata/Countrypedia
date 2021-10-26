@@ -1,39 +1,30 @@
 import { GetStaticProps } from 'next';
-import styles from '@Styles/Index.module.scss';
+import styles from '@styles/Index.module.scss';
 
 import Input from '@components/Input';
 import Select from '@components/Select';
 import CountryCards from '@components/CountryCards';
 
 import SearchIcon from '@icons/Search';
-import { CountryCardProps } from '../types/CountryTypes';
-
-import { useTheme } from '@contexts/ThemeContext';
+import { CountryCardProps } from 'types/CountryTypes';
 
 interface Props {
   data: CountryCardProps[];
 }
 
 export default function Home({ data }: Props) {
-  const { theme } = useTheme();
-
   return (
-    <div className={`container ${theme === 'light' ? 'light' : 'dark'}`}>
-      <div className={styles.contentContainer}>
-        <div className={styles.inputContainer}>
-          <Input
-            InputProps={{ type: 'text', placeholder: 'Search for a country...' }}
-            labelId="search-country"
-          >
-            <SearchIcon color="var(--input)" />
-          </Input>
+    <div className={styles.contentContainer}>
+      <div className={styles.inputContainer}>
+        <Input InputProps={{ type: 'text', placeholder: 'Search for a country...' }} labelId="search-country">
+          <SearchIcon color="var(--input)" />
+        </Input>
 
-          <Select />
-        </div>
+        <Select />
+      </div>
 
-        <div className={styles.cardsContainer}>
-          <CountryCards data={data} />
-        </div>
+      <div className={styles.cardsContainer}>
+        <CountryCards data={data} />
       </div>
     </div>
   );

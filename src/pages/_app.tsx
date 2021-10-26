@@ -1,19 +1,21 @@
 import { AppProps } from 'next/app';
 import '@styles/main.scss';
 
-import Header from '@components/Header';
+import App from '@components/App';
 
-import ThemeContextProvider from '@contexts/ThemeContext';
+import { ThemeProvider } from '@contexts/ThemeContext';
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <ThemeContextProvider>
-      <Header />
-
+    <ThemeProvider>
       <div>
-        <Component {...pageProps} />
+        
+        <App>
+          <Component {...pageProps} />
+        </App>
+        
       </div>
-    </ThemeContextProvider>
+    </ThemeProvider>
   );
 }
 export default MyApp;

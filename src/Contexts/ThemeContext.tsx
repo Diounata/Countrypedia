@@ -3,28 +3,28 @@ import { createContext, ReactNode, useContext, useState } from 'react';
 export const ThemeContext = createContext({} as ContextProps);
 
 interface ChildrenProps {
-    children: ReactNode;
+  children: ReactNode;
 }
 
 type ThemeProps = 'light' | 'dark';
 
 interface ContextProps {
-    theme: ThemeProps;
-    toggleTheme(): void;
+  theme: ThemeProps;
+  toggleTheme(): void;
 }
 
-export default function ThemeContextProvider({ children }: ChildrenProps) {
-    const [theme, setTheme] = useState<ThemeProps>('light');
+export function ThemeProvider({ children }: ChildrenProps) {
+  const [theme, setTheme] = useState<ThemeProps>('light');
 
-    function toggleTheme(): void {
-        const newTheme = theme === 'light' ? 'dark' : 'light';
+  function toggleTheme(): void {
+    const newTheme = theme === 'light' ? 'dark' : 'light';
 
-        setTheme(newTheme);
-    }
+    setTheme(newTheme);
+  }
 
-    return <ThemeContext.Provider value={{ theme, toggleTheme }}>{children}</ThemeContext.Provider>;
+  return <ThemeContext.Provider value={{ theme, toggleTheme }}>{children}</ThemeContext.Provider>;
 }
 
 export function useTheme() {
-    return useContext(ThemeContext);
+  return useContext(ThemeContext);
 }
