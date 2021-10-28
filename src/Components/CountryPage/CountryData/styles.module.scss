@@ -1,0 +1,39 @@
+.container {
+  > div,
+  & {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 1.5rem;
+  }
+
+  .borderCountriesContainer {
+    gap: 0.5rem;
+
+    > div {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+
+      overflow-x: scroll;
+      padding-bottom: 1rem;
+    }
+  }
+
+  h2 {
+    font-weight: 800;
+    font-size: 1.7em;
+  }
+
+  h5 {
+    font-weight: 600;
+    font-size: 1.1em;
+    line-height: 2.3em;
+    text-align: justify;
+
+    span {
+      font-weight: 300;
+      opacity: 0.8;
+    }
+  }
+}

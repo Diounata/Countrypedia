@@ -1,68 +1,25 @@
 @use '@styles/mixins/box-shadow' as add;
 
 .container {
-  padding: 2.4rem 3rem;
-
-  img {
-    width: 30rem;
-    height: 22rem;
-
-    @include add.box-shadow;
-  }
+  padding: 2rem 1.5rem;
 
   .buttonContainer {
     margin-bottom: 2.4rem;
   }
 
-  .countryContainer {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    align-items: center;
-    justify-content: space-between;
+  .imgContainer {
+    margin: 2.4rem 0;
+    background: transparent;
 
-    .imgContainer {
-      display: flex;
-      align-items: center;
-    }
+    img {
+      width: 100%;
+      height: calc(100vw / 1.6);
 
-    > div:last-child {
-      display: flex;
-      flex-direction: column;
-      gap: 1.5rem;
-
-      > div {
-        display: flex;
-        gap: 6rem;
-      }
-    }
-
-    h2,
-    h5 {
-      display: block;
-      text-overflow: ellipsis;
-      overflow: hidden;
-      white-space: nowrap;
-      max-width: 100%;
-    }
-
-    h2 {
-      font-size: 1.8em;
-      font-weight: 800;
-    }
-
-    h5 {
-      font-size: 1.05em;
-      line-height: 2rem;
-      font-weight: 600;
-
-      span {
-        opacity: 0.9;
-        font-weight: 300;
-      }
+      @include add.box-shadow;
     }
   }
 
-  @media (max-width: 568px) {
-    padding: 2rem 1.5rem;
+  @media (min-width: 900px) {
+    padding: 2.4rem 3rem;
   }
 }

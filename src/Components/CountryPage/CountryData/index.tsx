@@ -1,16 +1,18 @@
+import styles from './styles.module.scss';
+
 import { CountryProps } from 'types/CountryTypes';
-import { useCountry } from './useCountry';
+import { useCountry } from '../useCountry';
 
 interface Props {
   countryData: CountryProps;
 }
 
 export default function CountryData({ countryData }: Props) {
-  const { getData, formatNumber, formatArraytoString, formatObjectToString, getBorderCountriesButton } = useCountry();
+  const { getData, formatNumber, formatArrayToString, formatObjectToString, getBorderCountriesButton } = useCountry();
   const { name, capital, languages, population, region, subregion, currencies, nativeName, topLevelDomain, borders } = countryData;
 
   return (
-    <div>
+    <div className={styles.container}>
       <h2>{name}</h2>
 
       <div>
@@ -38,7 +40,7 @@ export default function CountryData({ countryData }: Props) {
 
         <div>
           <h5>
-            Top Level Domain: <span>{formatArraytoString(topLevelDomain)}</span>
+            Top Level Domain: <span>{formatArrayToString(topLevelDomain)}</span>
           </h5>
 
           <h5>
@@ -51,10 +53,10 @@ export default function CountryData({ countryData }: Props) {
         </div>
       </div>
 
-      <div>
-        <h5 style={{ display: 'flex', alignItems: 'center', gap: '0.7rem' }}>
-          Border Countries: {getBorderCountriesButton(borders)}
-        </h5>
+      <div className={styles.borderCountriesContainer}>
+        <h5>Border Countries:</h5>
+
+        <div>{getBorderCountriesButton(borders)}</div>
       </div>
     </div>
   );

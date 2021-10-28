@@ -8,7 +8,7 @@ type ObjectProps = CurrenciesProps | LanguagesProps;
 interface Props {
   getData(data: any): string;
   formatNumber(num: number): string;
-  formatArraytoString(stringArr: string[]): string;
+  formatArrayToString(stringArr: string[]): string;
   formatObjectToString(value: ObjectProps[]): string;
   getBorderCountriesButton(borders: string[]): JSX.Element;
 }
@@ -22,7 +22,7 @@ export function useCountry(): Props {
     return new Intl.NumberFormat().format(num);
   }
 
-  function formatArraytoString(stringArr: string[]): string {
+  function formatArrayToString(stringArr: string[]): string {
     const arrLength = stringArr.length;
     let dataString = '';
 
@@ -38,7 +38,7 @@ export function useCountry(): Props {
   function formatObjectToString(value: ObjectProps[]): string {
     const string = value.map((element: ObjectProps) => element.name);
 
-    return formatArraytoString(string);
+    return formatArrayToString(string);
   }
 
   function getBorderCountriesButton(borders: string[]): JSX.Element {
@@ -62,7 +62,7 @@ export function useCountry(): Props {
   return {
     getData,
     formatNumber,
-    formatArraytoString,
+    formatArrayToString,
     formatObjectToString,
     getBorderCountriesButton,
   };
