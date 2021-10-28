@@ -32,7 +32,7 @@ export function useCountry(): Props {
       dataString += string;
     });
 
-    return dataString;
+    return dataString || 'none';
   }
 
   function formatObjectToString(value: ObjectProps[]): string {
@@ -42,9 +42,7 @@ export function useCountry(): Props {
   }
 
   function getBorderCountriesButton(borders: string[]): JSX.Element {
-    if (!borders.length) {
-      return <span>None</span>;
-    }
+    if (!borders.length) return <span>None</span>;
 
     return (
       <>
