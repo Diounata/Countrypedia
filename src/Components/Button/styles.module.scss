@@ -15,8 +15,12 @@
   align-items: center;
   gap: 0.5rem;
 
+  &,
+  span {
+    white-space: nowrap;
+  }
+
   span {
     opacity: 0.8;
-    white-space: nowrap;
   }
 }
