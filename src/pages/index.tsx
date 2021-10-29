@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { GetStaticProps } from 'next';
 import styles from '@styles/Index.module.scss';
 
@@ -6,13 +7,19 @@ import Select from '@components/Select';
 import CountryCards from '@components/CountryCards';
 
 import SearchIcon from '@icons/Search';
+
 import { CountryCardProps } from 'types/CountryTypes';
+import { useCountry } from '@contexts/CountryContext';
 
 interface Props {
   data: CountryCardProps[];
 }
 
 export default function Home({ data }: Props) {
+  const { updateAllCountries } = useCountry();
+
+  useEffect(() => updateAllCountries(data), []);
+
   return (
     <div className={styles.contentContainer}>
       <div className={styles.inputContainer}>
@@ -24,7 +31,7 @@ export default function Home({ data }: Props) {
       </div>
 
       <div className={styles.cardsContainer}>
-        <CountryCards data={data} />
+        <CountryCards />
       </div>
     </div>
   );

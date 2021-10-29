@@ -13,7 +13,7 @@ interface Props {
   getBorderCountriesButton(borders: string[]): JSX.Element;
 }
 
-export function useCountry(): Props {
+export function useCountryData(): Props {
   function getData(data: any): string {
     return data || 'none';
   }

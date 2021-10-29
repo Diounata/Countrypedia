@@ -1,14 +1,14 @@
 import styles from './styles.module.scss';
 
 import { CountryProps } from 'types/CountryTypes';
-import { useCountry } from '../useCountry';
+import { useCountryData } from '../useCountryData';
 
 interface Props {
   countryData: CountryProps;
 }
 
 export default function CountryData({ countryData }: Props) {
-  const { getData, formatNumber, formatArrayToString, formatObjectToString, getBorderCountriesButton } = useCountry();
+  const { getData, formatNumber, formatArrayToString, formatObjectToString, getBorderCountriesButton } = useCountryData();
   const { name, capital, languages, population, region, subregion, currencies, nativeName, topLevelDomain, borders } = countryData;
 
   return (

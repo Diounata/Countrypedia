@@ -1,19 +1,13 @@
 import Link from 'next/link';
 import styles from './styles.module.scss';
 
-interface CountryDataProps {
-  flag: string;
-  name: string;
-  capital: string;
-  region: string;
-  population: number;
-}
+import { CountryCardProps } from 'types/CountryTypes';
 
-interface Props {
-  data: CountryDataProps[];
-}
+import { useCountry } from '@contexts/CountryContext';
 
-export default function CountryCards({ data }: Props) {
+export default function CountryCards() {
+  const { countries } = useCountry();
+
   function showData(value: string | number): string | number {
     if (typeof value === 'string') {
       return value !== '' ? value : 'Unexistent';
@@ -24,7 +18,7 @@ export default function CountryCards({ data }: Props) {
 
   return (
     <div className={styles.cardsContainer}>
-      {data.map(({ flag, name, capital, region, population }: CountryDataProps, key: number) => (
+      {countries.map(({ flag, name, capital, region, population }: CountryCardProps, key: number) => (
         <div key={key}>
           <div>
             <Link href={`/country/${name.toLowerCase()}`}>

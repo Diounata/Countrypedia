@@ -9,6 +9,8 @@
     background: var(--header-background);
     border-radius: 6px;
 
+    min-width: 210px;
+
     user-select: none;
 
     @include add.box-shadow;

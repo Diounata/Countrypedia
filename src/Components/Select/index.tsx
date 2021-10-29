@@ -4,29 +4,33 @@ import styles from './styles.module.scss';
 import ArrowDownIcon from '@icons/DownArrow';
 import LeftArrowIcon from '@icons/LeftArrow';
 
-type OptionProps = 'Africa' | 'Americas' | 'Asia' | 'Europe' | 'Oceania';
+import { FilterProps } from 'types/FilterTypes';
+
+import { useCountry } from '@contexts/CountryContext';
 
 export default function Select() {
-    const [isSelectOpen, setIsSelectOpen] = useState(false);
-    const [selectedOption, setSelectedOption] = useState<OptionProps>();
+  const [isSelectOpen, setIsSelectOpen] = useState(false);
+  const { regionFilter, updateRegionFilter } = useCountry();
 
-    const options: OptionProps[] = ['Africa', 'Americas', 'Asia', 'Europe', 'Oceania'];
+  const options: FilterProps[] = ['Africa', 'Americas', 'Asia', 'Europe', 'Oceania'];
 
-    return (
-        <div className={styles.selectContainer}>
-            <div className={styles.selectTitle} onClick={() => setIsSelectOpen(!isSelectOpen)}>
-                <div>Filter by Region</div>
+  function getSelectTitle(): string {
+    return regionFilter === 'None' ? 'Filter by Region' : regionFilter;
+  }
 
-                <ArrowDownIcon />
-            </div>
+  return (
+    <div className={styles.selectContainer}>
+      <div onClick={() => setIsSelectOpen(!isSelectOpen)} className={styles.selectTitle}>
+        <div>{getSelectTitle()}</div> <ArrowDownIcon />
+      </div>
 
-            <div className={styles.selectOptions} style={{ display: isSelectOpen ? 'flex' : 'none' }}>
-                {options.map((element: OptionProps, key: number) => (
-                    <div key={key} onClick={() => setSelectedOption(element)}>
-                        <div>{element}</div> {selectedOption === element && <LeftArrowIcon />}
-                    </div>
-                ))}
-            </div>
-        </div>
-    );
+      <div style={{ display: isSelectOpen ? 'flex' : 'none' }} className={styles.selectOptions}>
+        {options.map((element: FilterProps, key: number) => (
+          <div onClick={() => updateRegionFilter(element)} key={key}>
+            <div>{element}</div> {regionFilter === element && <LeftArrowIcon />}
+          </div>
+        ))}
+      </div>
+    </div>
+  );
 }
