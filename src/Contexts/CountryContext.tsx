@@ -47,7 +47,7 @@ export function CountryProvider({ children }: ChildrenProps) {
   }
 
   useEffect(() => filterCountriesByRegion(), [regionFilter]);
-  useEffect(() => updateCountries(allCountries), []);
+  useEffect(() => updateCountries(allCountries), [allCountries]);
 
   return (
     <CountryContext.Provider
