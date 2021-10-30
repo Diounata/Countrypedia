@@ -1,39 +1,43 @@
 @use '@styles/mixins/box-shadow.scss' as add;
 
 .inputContainer {
-    &,
-    label {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-    }
-    gap: 1rem;
+  &,
+  label {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  gap: 1rem;
 
-    background: var(--header-background);
-    width: fit-content;
+  background: var(--header-background);
+  width: 25rem;
 
-    padding: 1rem 1.5rem;
-    border-radius: 6px;
+  padding: 1rem 1.5rem;
+  border-radius: 6px;
 
-    @include add.box-shadow;
+  @include add.box-shadow;
+
+  input {
+    flex: 1;
+    background: none;
+    border: none;
+
+    outline: none;
+
+    font-weight: 600;
+    font-family: 'Nunito Sans', sans-serif;
+    color: var(--text);
+  }
+
+  @media (max-width: 720px) {
+    width: 16rem;
+  }
+
+  @media (max-width: 600px) {
+    width: 100%;
 
     input {
-        flex: 1;
-        background: none;
-        border: none;
-
-        outline: none;
-
-        font-weight: 600;
-        font-family: 'Nunito Sans', sans-serif;
-        color: var(--text);
+      font-size: 1em;
     }
-
-    @media (max-width: 568px) {
-        width: 100%;
-
-        input {
-            font-size: 1.15em;
-        }
-    }
+  }
 }

@@ -40,8 +40,7 @@ export default function Home({ data }: Props) {
 export const getStaticProps: GetStaticProps = async () => {
   try {
     const res = await fetch('https://restcountries.com/v2/all?fields=flag,name,population,region,capital');
-    const initialData = await res.json();
-    const data: CountryCardProps[] = initialData.filter((element: CountryCardProps, key: number) => key < 80);
+    const data = await res.json();
 
     return {
       props: {
