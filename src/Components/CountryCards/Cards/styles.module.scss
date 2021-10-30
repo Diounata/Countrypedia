@@ -9,6 +9,7 @@
 
   > div {
     background: var(--element);
+    border-radius: 6px;
 
     @include add.box-shadow;
 

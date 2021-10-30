@@ -8,11 +8,17 @@ import Button from '@components/Button';
 
 import { BsArrowLeft } from 'react-icons/bs';
 
+import { useCountry } from '@contexts/CountryContext';
+
 interface Props {
   country: CountryProps;
 }
 
 export default function CountryPage({ country }: Props) {
+  const { updateSearchFilter } = useCountry();
+  
+  updateSearchFilter('');
+
   return (
     <div className={styles.container}>
       <div className={styles.buttonContainer}>
