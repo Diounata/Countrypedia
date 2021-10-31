@@ -8,7 +8,7 @@
   }
 
   .imgContainer {
-    margin: 2.4rem 0;
+    margin-bottom: 2.4rem;
     background: transparent;
 
     img {
@@ -21,5 +21,22 @@
 
   @media (min-width: 900px) {
     padding: 2.4rem 3rem;
+  }
+
+  @media (min-width: 1300px) {
+    .countryContainer {
+      display: flex;
+      align-items: center;
+      gap: 8rem;
+    }
+
+    .imgContainer {
+      margin-bottom: 0;
+
+      img {
+        width: 28rem;
+        height: 21rem;
+      }
+    }
   }
 }
