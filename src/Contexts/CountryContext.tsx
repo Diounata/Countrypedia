@@ -67,6 +67,8 @@ export function CountryProvider({ children }: ChildrenProps) {
       element.name.toLowerCase().includes(searchFilter.toLowerCase())
     );
 
+    if (filteredCountries && lastSearchFilterLength >= 3) setCurrentComponentCard('Cards');
+    
     if (filteredCountries.length !== 0) updateCountries(filteredCountries);
     else setCurrentComponentCard('NotFound');
   }
@@ -75,15 +77,14 @@ export function CountryProvider({ children }: ChildrenProps) {
   useEffect(() => updateCountries(allCountries), [allCountries]);
 
   useEffect(() => {
-    if (searchFilter.length >= 3) {
+    const searchFilterLength = searchFilter.length;
+
+    if (searchFilterLength >= 3) {
       filterCountries();
       return;
     }
 
-    if (lastSearchFilterLength >= 3 && searchFilter.length < 3) {
-      setCurrentComponentCard('Cards');
-      updateCountries(allCountries);
-    }
+    if (lastSearchFilterLength >= 3 && searchFilterLength < 3) updateCountries(allCountries);
   }, [searchFilter]);
 
   return (
