@@ -5,6 +5,7 @@ import styles from '@styles/CountryPage.module.scss';
 
 import CountryData from '@components/CountryPage/CountryData';
 import Button from '@components/Button';
+import Title from '@utils/PageTitle';
 
 import { BsArrowLeft } from 'react-icons/bs';
 
@@ -16,11 +17,13 @@ interface Props {
 
 export default function CountryPage({ country }: Props) {
   const { updateSearchFilter } = useCountry();
-  
+
   updateSearchFilter('');
 
   return (
     <div className={styles.container}>
+      <Title favicon={country.flag}>{country.name}</Title>
+
       <div className={styles.buttonContainer}>
         <Link href="/">
           <a>
