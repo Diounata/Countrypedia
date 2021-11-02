@@ -1,4 +1,4 @@
-import { InputHTMLAttributes, ReactNode, useEffect } from 'react';
+import { InputHTMLAttributes, ReactNode } from 'react';
 import styles from './styles.module.scss';
 
 import { useCountry } from '@contexts/CountryContext';

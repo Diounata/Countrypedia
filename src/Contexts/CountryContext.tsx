@@ -52,6 +52,8 @@ export function CountryProvider({ children }: ChildrenProps) {
   }
 
   function filterCountriesByRegion(): void {
+    if (currentComponentCard === 'NotFound') setCurrentComponentCard('Cards');
+
     if (regionFilter === 'None') updateCountries(allCountries);
     else {
       const newCountries: CountryCardProps[] = allCountries.filter(
@@ -68,12 +70,16 @@ export function CountryProvider({ children }: ChildrenProps) {
     );
 
     if (filteredCountries && lastSearchFilterLength >= 3) setCurrentComponentCard('Cards');
-    
+
     if (filteredCountries.length !== 0) updateCountries(filteredCountries);
     else setCurrentComponentCard('NotFound');
   }
 
-  useEffect(() => filterCountriesByRegion(), [regionFilter]);
+  useEffect(() => {
+    setSearchFilter('');
+    filterCountriesByRegion();
+  }, [regionFilter]);
+
   useEffect(() => updateCountries(allCountries), [allCountries]);
 
   useEffect(() => {
