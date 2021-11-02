@@ -1,16 +1,13 @@
 import Head from 'next/head';
 
 interface Props {
-  children: string;
-  favicon?: string;
+  text: string;
 }
 
-export default function Title({ children, favicon }: Props) {
+export default function Title({ text }: Props) {
   return (
     <Head>
-      <title>{children}</title>
-
-      {favicon && <link rel="shortcut icon" href={favicon} type="image/x-icon" />}
+      <title>{text}</title>
     </Head>
   );
 }

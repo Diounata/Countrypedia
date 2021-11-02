@@ -6,6 +6,7 @@ import Input from '@components/Input';
 import Select from '@components/Select';
 import CountryCards from '@components/CountryCards';
 import Title from '@utils/PageTitle';
+import Favicon from '@utils/Favicon';
 
 import SearchIcon from '@icons/Search';
 
@@ -23,7 +24,8 @@ export default function Home({ data }: Props) {
 
   return (
     <div className={styles.contentContainer}>
-      <Title>Country.data</Title>
+      <Title text="Country.data" />
+      <Favicon faviconUrl="./favicon.ico" />
 
       <div className={styles.inputContainer}>
         <Input InputProps={{ type: 'text', placeholder: 'Search for a country...' }} labelId="search-country">
