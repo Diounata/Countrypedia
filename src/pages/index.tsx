@@ -18,9 +18,12 @@ interface Props {
 }
 
 export default function Home({ data }: Props) {
-  const { updateAllCountries } = useCountry();
+  const { updateAllCountries, resetFilters } = useCountry();
 
-  useEffect(() => updateAllCountries(data), []);
+  useEffect(() => {
+    updateAllCountries(data);
+    resetFilters();
+  }, []);
 
   return (
     <div className={styles.contentContainer}>

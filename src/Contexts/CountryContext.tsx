@@ -21,6 +21,7 @@ interface ContextProps {
   updateCountries(value: CountryCardProps[]): void;
   updateRegionFilter(value: FilterProps): void;
   updateSearchFilter(value: string): void;
+  resetFilters(): void;
 }
 
 export function CountryProvider({ children }: ChildrenProps) {
@@ -75,6 +76,11 @@ export function CountryProvider({ children }: ChildrenProps) {
     else setCurrentComponentCard('NotFound');
   }
 
+  function resetFilters(): void {
+    setRegionFilter('None');
+    setLastSearchFilterLength(0);
+  }
+
   useEffect(() => {
     setSearchFilter('');
     filterCountriesByRegion();
@@ -104,6 +110,7 @@ export function CountryProvider({ children }: ChildrenProps) {
         updateCountries,
         updateRegionFilter,
         updateSearchFilter,
+        resetFilters
       }}
     >
       {children}
