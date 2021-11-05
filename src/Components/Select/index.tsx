@@ -10,7 +10,7 @@ import { useCountry } from '@contexts/CountryContext';
 
 export default function Select() {
   const [isSelectOpen, setIsSelectOpen] = useState(false);
-  const { regionFilter, updateRegionFilter } = useCountry();
+  const { regionFilter, updateRegionFilter  } = useCountry();
 
   const options: FilterProps[] = ['Africa', 'Americas', 'Asia', 'Europe', 'Oceania'];
 

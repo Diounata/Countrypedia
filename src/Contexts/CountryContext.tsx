@@ -5,7 +5,7 @@ import { FilterProps } from 'types/FilterTypes';
 
 const CountryContext = createContext({} as ContextProps);
 
-type CurrentCardComponentProps = 'Cards' | 'NotFound';
+type CardComponentSituationProps = 'Found' | 'NotFound';
 
 interface ChildrenProps {
   children: ReactNode;
@@ -15,7 +15,7 @@ interface ContextProps {
   countries: CountryCardProps[];
   regionFilter: FilterProps;
   searchFilter: string;
-  currentComponentCard: CurrentCardComponentProps;
+  cardComponentSituation: CardComponentSituationProps;
 
   updateAllCountries(value: CountryCardProps[]): void;
   updateCountries(value: CountryCardProps[]): void;
@@ -29,8 +29,9 @@ export function CountryProvider({ children }: ChildrenProps) {
   const [countries, setCountries] = useState<CountryCardProps[]>([]);
   const [regionFilter, setRegionFilter] = useState<FilterProps>('None');
   const [searchFilter, setSearchFilter] = useState<string>('');
+  const [isFilteringByRegion, setIsFilteringByRegion] = useState(true);
   const [lastSearchFilterLength, setLastSearchFilterLength] = useState(0);
-  const [currentComponentCard, setCurrentComponentCard] = useState<CurrentCardComponentProps>('Cards');
+  const [cardComponentSituation, setCardComponentSituation] = useState<CardComponentSituationProps>('Found');
 
   function updateAllCountries(value: CountryCardProps[]): void {
     setAllCountries(value);
@@ -42,7 +43,9 @@ export function CountryProvider({ children }: ChildrenProps) {
     setCountries(newCountries);
   }
 
-  function updateRegionFilter(value: FilterProps) {
+  function updateRegionFilter(value: FilterProps): void {
+    setIsFilteringByRegion(true);
+
     if (value === regionFilter) setRegionFilter('None');
     else setRegionFilter(value);
   }
@@ -53,7 +56,7 @@ export function CountryProvider({ children }: ChildrenProps) {
   }
 
   function filterCountriesByRegion(): void {
-    if (currentComponentCard === 'NotFound') setCurrentComponentCard('Cards');
+    if (cardComponentSituation === 'NotFound') setCardComponentSituation('Found');
 
     if (regionFilter === 'None') updateCountries(allCountries);
     else {
@@ -65,15 +68,15 @@ export function CountryProvider({ children }: ChildrenProps) {
     }
   }
 
-  function filterCountries(): void {
+  function filterCountriesBySearching(): void {
     const filteredCountries = allCountries.filter(element =>
       element.name.toLowerCase().includes(searchFilter.toLowerCase())
     );
 
-    if (filteredCountries && lastSearchFilterLength >= 3) setCurrentComponentCard('Cards');
+    if (filteredCountries && lastSearchFilterLength >= 3) setCardComponentSituation('Found');
 
     if (filteredCountries.length !== 0) updateCountries(filteredCountries);
-    else setCurrentComponentCard('NotFound');
+    else setCardComponentSituation('NotFound');
   }
 
   function resetFilters(): void {
@@ -81,22 +84,30 @@ export function CountryProvider({ children }: ChildrenProps) {
     setLastSearchFilterLength(0);
   }
 
-  useEffect(() => {
-    setSearchFilter('');
-    filterCountriesByRegion();
-  }, [regionFilter]);
-
   useEffect(() => updateCountries(allCountries), [allCountries]);
+
+  useEffect(() => {
+    if (isFilteringByRegion) {
+      filterCountriesByRegion();
+      setSearchFilter('');
+      setIsFilteringByRegion(false);
+    }
+  }, [regionFilter]);
 
   useEffect(() => {
     const searchFilterLength = searchFilter.length;
 
     if (searchFilterLength >= 3) {
-      filterCountries();
+      if (regionFilter !== 'None') setRegionFilter('None');
+
+      filterCountriesBySearching();
       return;
     }
 
-    if (lastSearchFilterLength >= 3 && searchFilterLength < 3) updateCountries(allCountries);
+    if (lastSearchFilterLength >= 3 && searchFilterLength < 3) {
+      updateCountries(allCountries);
+      setCardComponentSituation('Found');
+    }
   }, [searchFilter]);
 
   return (
@@ -105,12 +116,12 @@ export function CountryProvider({ children }: ChildrenProps) {
         countries,
         regionFilter,
         searchFilter,
-        currentComponentCard,
+        cardComponentSituation,
         updateAllCountries,
         updateCountries,
         updateRegionFilter,
         updateSearchFilter,
-        resetFilters
+        resetFilters,
       }}
     >
       {children}

@@ -4,12 +4,12 @@ import NotFound from './NotFound';
 import { useCountry } from '@contexts/CountryContext';
 
 export default function CountryCards() {
-  const { currentComponentCard } = useCountry();
+  const { cardComponentSituation } = useCountry();
 
   const CardComponent = {
-    Cards: <Cards />,
+    Found: <Cards />,
     NotFound: <NotFound />,
   };
 
-  return <>{CardComponent[currentComponentCard]}</>;
+  return <>{CardComponent[cardComponentSituation]}</>;
 }
