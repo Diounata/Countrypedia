@@ -23,4 +23,9 @@
   span {
     opacity: 0.8;
   }
+
+  &:disabled {
+    opacity: 0.75;
+    cursor: not-allowed;
+  }
 }

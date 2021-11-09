@@ -13,12 +13,15 @@ interface ChildrenProps {
 
 interface ContextProps {
   countries: CountryCardProps[];
+  currentCountryPage: number;
   regionFilter: FilterProps;
   searchFilter: string;
+  isFiltering: boolean;
   cardComponentSituation: CardComponentSituationProps;
 
   updateAllCountries(value: CountryCardProps[]): void;
   updateCountries(value: CountryCardProps[]): void;
+  updateCurrentCountryPage(page: number): void;
   updateRegionFilter(value: FilterProps): void;
   updateSearchFilter(value: string): void;
   resetFilters(): void;
@@ -27,8 +30,10 @@ interface ContextProps {
 export function CountryProvider({ children }: ChildrenProps) {
   const [allCountries, setAllCountries] = useState<CountryCardProps[]>([]);
   const [countries, setCountries] = useState<CountryCardProps[]>([]);
+  const [currentCountryPage, setCurrentCountryPage] = useState(1);
   const [regionFilter, setRegionFilter] = useState<FilterProps>('None');
   const [searchFilter, setSearchFilter] = useState<string>('');
+  const [isFiltering, setIsFiltering] = useState(false);
   const [isFilteringByRegion, setIsFilteringByRegion] = useState(true);
   const [lastSearchFilterLength, setLastSearchFilterLength] = useState(0);
   const [cardComponentSituation, setCardComponentSituation] = useState<CardComponentSituationProps>('Found');
@@ -38,9 +43,16 @@ export function CountryProvider({ children }: ChildrenProps) {
   }
 
   function updateCountries(value: CountryCardProps[]): void {
-    let newCountries = value.filter((element, key) => key < 50);
+    const firstCountry = (currentCountryPage - 1) * 23;
+    const lastCountry = firstCountry + 23;
+
+    let newCountries = value.filter((element, key) => key >= firstCountry && key <= lastCountry);
 
     setCountries(newCountries);
+  }
+
+  function updateCurrentCountryPage(page: number): void {
+    setCurrentCountryPage(page);
   }
 
   function updateRegionFilter(value: FilterProps): void {
@@ -64,7 +76,7 @@ export function CountryProvider({ children }: ChildrenProps) {
         country => country.region === regionFilter
       );
 
-      updateCountries(newCountries);
+      setCountries(newCountries);
     }
   }
 
@@ -75,7 +87,7 @@ export function CountryProvider({ children }: ChildrenProps) {
 
     if (filteredCountries && lastSearchFilterLength >= 3) setCardComponentSituation('Found');
 
-    if (filteredCountries.length !== 0) updateCountries(filteredCountries);
+    if (filteredCountries.length !== 0) setCountries(filteredCountries);
     else setCardComponentSituation('NotFound');
   }
 
@@ -110,14 +122,26 @@ export function CountryProvider({ children }: ChildrenProps) {
     }
   }, [searchFilter]);
 
+  useEffect(() => {
+    updateCountries(allCountries);
+  }, [currentCountryPage]);
+
+  useEffect(() => {
+    if (regionFilter !== 'None' || searchFilter.length >= 3) setIsFiltering(true);
+    else setIsFiltering(false);
+  }, [regionFilter, searchFilter]);
+
   return (
     <CountryContext.Provider
       value={{
         countries,
+        currentCountryPage,
         regionFilter,
         searchFilter,
+        isFiltering,
         cardComponentSituation,
         updateAllCountries,
+        updateCurrentCountryPage,
         updateCountries,
         updateRegionFilter,
         updateSearchFilter,

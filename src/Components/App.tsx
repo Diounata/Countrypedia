@@ -1,4 +1,5 @@
 import { ReactNode } from 'react';
+import { IconContext } from 'react-icons';
 
 import Header from '@components/Header';
 
@@ -12,10 +13,14 @@ export default function App({ children }: Props) {
   const { theme } = useTheme();
 
   return (
-    <div className={`container ${theme === 'light' ? 'light' : 'dark'}`}>
-      <Header />
+    <IconContext.Provider
+      value={{ color: theme === 'light' ? '#111517' : '#ffffff', className: 'global-class-name' }}
+    >
+      <div className={`container ${theme === 'light' ? 'light' : 'dark'}`}>
+        <Header />
 
-      {children}
-    </div>
+        {children}
+      </div>
+    </IconContext.Provider>
   );
 }
