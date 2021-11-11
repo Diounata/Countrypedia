@@ -21,6 +21,8 @@
 A Next.js app focusing on country data display using API requests.
 </p>
 
+<p>This project is a <a href='https://www.frontendmentor.io/'>Frontend Mentor</a> challenge. You can check it for more details.</p>
+
 ## :books: Technologies
 
 This project was made using the following techs:
