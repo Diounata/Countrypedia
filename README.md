@@ -13,7 +13,7 @@
 </p>
 
 <p align='center'>
-<img src="https://github.com/Diounata/countrypedia/blob/main/.github/app-preview.jpg" alt="App preview" />
+<img src="https://github.com/Diounata/countrypedia/blob/main/.github/app-preview.jpg" width='500px' alt="App preview" />
 </p>
  
 ## :dart: Overview
