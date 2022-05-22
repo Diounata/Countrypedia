@@ -27,7 +27,7 @@ export default function Home({ data }: Props) {
 
   return (
     <div className={styles.contentContainer}>
-      <Title text="Country.data" />
+      <Title text="Countrypedia" />
       <Favicon faviconUrl="./favicon.ico" />
 
       <div className={styles.inputContainer}>
